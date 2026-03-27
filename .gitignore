@@ -1,0 +1,19 @@
+# Virtual environments
+project/rag_env/
+project/.venv/
+
+# Project data folders
+project/pdfs/
+project/notebooks/
+project/vector_db/*
+!project/vector_db/.gitkeep
+
+# History
+project/UI/conversations/
+
+# Config
+project/config.json
+
+# Python cache
+**/__pycache__/
+**/*.pyc

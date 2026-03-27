@@ -1,0 +1,26 @@
+# Numpy 
+numpy
+
+# PDF parsing
+unstructured[pdf]
+unstructured-inference
+
+# Dense vector index
+faiss-cpu          # or faiss-gpu if you have CUDA
+
+# Sparse index
+rank-bm25
+
+# Torch
+torch==2.8.0 
+torchvision==0.23.0 
+torchaudio==2.8.0
+
+# Ollama HTTP client
+httpx
+
+# HuggingFace embeddings
+sentence-transformers
+
+# UI
+PyQt6
