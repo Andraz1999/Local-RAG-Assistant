@@ -18,7 +18,7 @@ A fully local Retrieval-Augmented Generation (RAG) application that lets you cha
 
 ## 🖥️ Demo
 
-https://github.com/user-attachments/assets/b6505baa-966d-438d-a563-6ce3d50dd438
+https://github.com/user-attachments/assets/ee42c3d9-a3c7-485a-8b55-69eedc85e3dc
 
 ---
 
