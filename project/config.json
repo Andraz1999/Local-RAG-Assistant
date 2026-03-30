@@ -1,0 +1,54 @@
+{
+  "paths": {
+    "input_folder": "",
+    "db_folder": "./vector_db"
+  },
+  "retrieval": {
+    "mode": "hybrid",
+    "sparse_model": "splade",
+    "k": 15,
+    "rrf_constant": 60
+  },
+  "chunking": {
+    "strategy": "by_title",
+    "max_characters": 1500,
+    "new_after_n_chars": 1200,
+    "overlap": 500
+  },
+  "partition": {
+    "strategy": "auto"
+  },
+  "embedding": {
+    "ollama_base_url": "http://localhost:11434",
+    "ollama_embedding_model_names": [
+      "nomic-embed-text",
+      "mxbai-embed-large"
+    ],
+    "hf_embedding_model_names": [
+      "BAAI/bge-large-en-v1.5",
+      "sentence-transformers/all-MiniLM-L6-v2"
+    ],
+    "current_embedding_model": 1,
+    "splade_model_names": [
+      "naver/splade-cocondenser-ensembledistil"
+    ],
+    "current_splade_model": 0,
+    "batch_size": 32,
+    "provider": "ollama"
+  },
+  "rewriter": {
+    "model_names": [
+      "Disabled",
+      "llama3.2:3b",
+      "llama3.1:8b"
+    ],
+    "current_rewriter_model": 1
+  },
+  "reasoner": {
+    "model_names": [
+      "deepseek-r1:8b",
+      "llama3.1:8b"
+    ],
+    "current_reasoner_model": 0
+  }
+}
