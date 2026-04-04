@@ -468,6 +468,31 @@ def _stylesheet(theme: str, fs: int) -> str:
 
 
 # ---------------------------------------------------------------------------
+# Error message helpers
+# ---------------------------------------------------------------------------
+
+def _friendly_error(exc: Exception) -> str:
+    """
+    Translate known low-level exceptions into user-readable messages.
+    Falls back to the raw exception string for anything unrecognised.
+    """
+    msg = str(exc)
+    print(msg)
+    if "input length exceeds the context length" in msg:
+        return (
+            "The embedding model's context window is too small for one or more "
+            "of your chunks.\n\n"
+            "Try one of the following:\n"
+            "  \u2022 Switch to a model with a larger context window (e.g. nomic-embed-text "
+            "supports up to 8 192 tokens, while mxbai-embed-large only supports 512).\n"
+            "  \u2022 Reduce the chunk size in Settings \u2192 Chunking "
+            "(lower 'Max characters' and 'New after N chars').\n\n"
+            "After changing the embedding model you must reset and re-index the database."
+        )
+    return msg
+
+
+# ---------------------------------------------------------------------------
 # Background worker for RAG queries
 # ---------------------------------------------------------------------------
 
@@ -518,7 +543,7 @@ class _RAGWorker(QObject):
             self.finished.emit(rag_answer_obj.answer, results, cited_ids)
 
         except Exception as exc:
-            self.error.emit(str(exc))
+            self.error.emit(_friendly_error(exc))
 
 
 # ---------------------------------------------------------------------------
@@ -644,7 +669,7 @@ class _IndexWorker(QObject):
 
         except Exception as exc:
             import traceback
-            self.done.emit(f"Indexing error: {exc}\n{traceback.format_exc()}")
+            self.done.emit(f"Indexing error: {_friendly_error(exc)}\n{traceback.format_exc()}")
 
 
 # ---------------------------------------------------------------------------
