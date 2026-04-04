@@ -76,7 +76,13 @@ class OllamaEmbedder(BaseDenseEmbedder):
                 "/api/embed",
                 json={"model": self._model, "input": batch},
             )
-            response.raise_for_status()
+            if response.status_code >= 400:
+                try:
+                    ollama_error = response.json().get("error", "")
+                except Exception:
+                    ollama_error = response.text
+                raise ValueError(ollama_error or f"Ollama returned {response.status_code}")
+            all_vectors.extend(response.json()["embeddings"])
             all_vectors.extend(response.json()["embeddings"])
         return np.array(all_vectors, dtype=np.float32)
 
