@@ -1,4 +1,6 @@
-# 📄 Local PDF RAG Assistant
+<img src="project/icon.png" alt="icon" width="64"><br>
+
+# Local PDF RAG Assistant
 
 A fully local Retrieval-Augmented Generation (RAG) application that lets you chat with your PDF documents. Ask questions in plain English and get answers drawn directly from your files — no internet connection, no cloud, no data leaves your machine. If the answer isn't in your PDFs, the model will tell you so.
 
