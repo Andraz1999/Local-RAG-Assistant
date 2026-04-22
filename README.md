@@ -1,4 +1,4 @@
-<img src="project/icon.png" alt="icon" width="64"><br>
+<img src="project/icon.png" alt="icon" width="256"><br>
 
 # Local PDF RAG Assistant
 
